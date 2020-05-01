@@ -8,9 +8,11 @@ const wss = new WebSocketServer({ server });
 const port = 3000;
 
 // Serve js files
-app.use('/js', express.static(path.join(__dirname, 'ui/js/')));
+// app.use('/js', express.static(path.join(__dirname, 'ui/js/')));
 // Serve css files
-app.use('/css', express.static(path.join(__dirname, 'ui/css/')));
+// app.use('/css', express.static(path.join(__dirname, 'ui/css/')));
+
+app.use(express.static(path.join(__dirname, 'ui')));
 
 
 app.get('/', (req, res) => {
