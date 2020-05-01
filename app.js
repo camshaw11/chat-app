@@ -1,11 +1,13 @@
 const express = require('express');
 const path = require('path');
 const app = express();
+const socketio = require('socket.io');
 
 const WebSocketServer = require('ws').Server;
 const server = require('http').createServer(app);
 const wss = new WebSocketServer({ server });
 const port = 3000;
+// const io = socketio(server);
 
 // Serve js files
 // app.use('/js', express.static(path.join(__dirname, 'ui/js/')));
@@ -14,10 +16,13 @@ const port = 3000;
 
 app.use(express.static(path.join(__dirname, 'ui')));
 
-
 app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname + '/ui/html/index.html'));
 });
+
+// io.on('connection', socket => {
+//   console.log('new ws connection');
+// });
 
 
 
